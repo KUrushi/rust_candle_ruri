@@ -1,4 +1,30 @@
-//! ModernBERT
+// This code is originally copied from the candle-transformers repository.
+// The candle-transformers repository is dual-licensed under MIT and Apache 2.0.
+// This modified version utilizes the code under the terms of the Apache License 2.0.
+//
+// The primary modification made to the original code is the adaptation of
+// safetensor key names. Different models or versions, such as `ruri_v3`
+// and the specific `modernbert` implementation this code targets, may expect
+// different key names for weights and biases within safetensor files.
+// The purpose of these modifications is to ensure compatibility with safetensor
+// files where keys are named according to the `modernbert` conventions
+// (e.g., "embeddings.tok_embeddings.weight", "layers.0.attn.Wqkv.weight",
+// "layers.0.mlp.Wi.weight", "final_norm.weight", etc.).
+//
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//     http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
+////! ModernBERT
 //!
 //! ModernBERT is a modernized bidirectional encoder-only Transformer model.
 //! - [Arxiv](https://arxiv.org/abs/2412.13663) "Smarter, Better, Faster, Longer: A Modern Bidirectional Encoder for Fast, Memory Efficient, and Long Context Finetuning and Inference"
